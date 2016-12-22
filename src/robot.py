@@ -9,6 +9,8 @@ class MyRobot(wpilib.IterativeRobot):
         This function is called upon program startup and
         should be used for any initialization code.
         """
+        self.stick = wpilib.Joystick(1)
+        self.motor = wpilib.Jaguar(3)
         pass
 
     def autonomousPeriodic(self):
@@ -21,6 +23,8 @@ class MyRobot(wpilib.IterativeRobot):
 
     def testPeriodic(self):
         """This function is called periodically during test mode."""
-
+        
+        # Move a Motor with a joystick
+        self.motor.set(self.stick.getY())
 if __name__ == "__main__":
     wpilib.run(MyRobot)
